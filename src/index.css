@@ -1,165 +1,144 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+import TrustBar from '../components/TrustBar'
+import CategoryGrid from '../components/CategoryGrid'
+import ProductCard from '../components/ProductCard'
 
-:root {
-  /* PlugMeUp Brand Colors */
-  --primary: #2E8B57;       /* Fresh green - trust & growth */
-  --primary-dark: #256F47;
-  --secondary: #1A365D;     /* Deep blue - reliability */
-  --accent: #FF6B35;        /* Orange - energy & action */
-  --text: #2D3748;
-  --text-light: #718096;
-  --background: #FFFFFF;
-  --border: #E2E8F0;
-  --success: #38A169;
-  --error: #E53E3E;
-  --warning: #DD6B20;
-  
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-2xl: 3rem;
-  
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-}
+export default function Home() {
+  const scrollToCategories = () => {
+    document.getElementById('categories').scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  color: var(--text);
-  line-height: 1.6;
-}
+  return (
+    <div>
+      {/* Hero Section */}
+      <section style={{
+        background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
+        padding: 'var(--space-2xl) 0',
+        color: 'white',
+        textAlign: 'center'
+      }}>
+        <div className="container">
+          <h1 style={{ 
+            fontSize: '2.5rem', 
+            marginBottom: 'var(--space-md)',
+            fontWeight: '700'
+          }}>
+            Affordable Essentials Delivered to Your Doorstep
+          </h1>
+          <p style={{ 
+            fontSize: '1.3rem',
+            marginBottom: 'var(--space-xl)',
+            opacity: '0.9'
+          }}>
+            We bring what you need closer to Kempton Park, Midrand & surrounding townships
+          </p>
+          
+          {/* Search Bar */}
+          <div style={{
+            maxWidth: '600px',
+            margin: '0 auto var(--space-xl)'
+          }}>
+            <input
+              type="text"
+              placeholder="Search for products, categories, or brands..."
+              style={{
+                width: '100%',
+                padding: 'var(--space-lg)',
+                borderRadius: 'var(--radius-lg)',
+                border: 'none',
+                fontSize: '1.1rem',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+              }}
+            />
+          </div>
+          
+          <button 
+            onClick={scrollToCategories}
+            className="btn btn-accent"
+            style={{
+              fontSize: '1.2rem',
+              padding: 'var(--space-lg) var(--space-2xl)'
+            }}
+          >
+            🛍️ Shop Now
+          </button>
+        </div>
+      </section>
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
-}
+      {/* Trust Bar */}
+      <TrustBar />
 
-/* Responsive Grid */
-.grid {
-  display: grid;
-  gap: var(--space-md);
-}
+      {/* Categories Section */}
+      <div id="categories">
+        <CategoryGrid />
+      </div>
 
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-.grid-5 { grid-template-columns: repeat(5, 1fr); }
+      {/* Featured Products */}
+      <section style={{ 
+        padding: 'var(--space-2xl) 0',
+        backgroundColor: '#F7FAFC'
+      }}>
+        <div className="container">
+          <h2 style={{ 
+            marginBottom: 'var(--space-xl)',
+            textAlign: 'center',
+            fontSize: '2rem'
+          }}>
+            🔥 Deals of the Week
+          </h2>
+          <div className="grid grid-4">
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </div>
+        </div>
+      </section>
 
-/* Big Mobile-Friendly Buttons */
-.btn {
-  display: inline-block;
-  padding: var(--space-md) var(--space-xl);
-  border: none;
-  border-radius: var(--radius-md);
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-}
-
-.btn-accent {
-  background: var(--accent);
-  color: white;
-}
-
-.btn-whatsapp {
-  background: #25D366;
-  color: white;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .grid-3, .grid-4, .grid-5 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .container {
-    padding: 0 var(--space-sm);
-  }
-}
-
-@media (max-width: 480px) {
-  .grid-2, .grid-3, .grid-4, .grid-5 {
-    grid-template-columns: 1fr;
-  }
-  
-  .btn {
-    min-height: 60px;
-    font-size: 1.2rem;
-  }
-}
-
-/* Trust Section Styles */
-.trust-badge {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  background: #F7FAFC;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-}
-
-.trust-badge i {
-  font-size: 1.5rem;
-}
-
-/* WhatsApp Float */
-.whatsapp-float {
-  position: fixed;
-  bottom: var(--space-lg);
-  right: var(--space-lg);
-  background: #25D366;
-  color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  z-index: 1000;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-  .whatsapp-float {
-    bottom: var(--space-md);
-    right: var(--space-md);
-    width: 70px;
-    height: 70px;
-    font-size: 2.5rem;
-  }
+      {/* Brand Story */}
+      <section style={{ padding: 'var(--space-2xl) 0' }}>
+        <div className="container">
+          <div style={{
+            maxWidth: '800px',
+            margin: '0 auto',
+            textAlign: 'center'
+          }}>
+            <h2 style={{ 
+              marginBottom: 'var(--space-lg)',
+              fontSize: '2rem',
+              color: 'var(--secondary)'
+            }}>
+              About PlugMeUp
+            </h2>
+            <p style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.8',
+              marginBottom: 'var(--space-lg)',
+              color: 'var(--text)'
+            }}>
+              PlugMeUp.co.za is a community-focused online store based in Kempton Park and serving surrounding townships. 
+              We believe everyday items should be affordable, easy to access, and delivered with trust.
+            </p>
+            <p style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.8',
+              marginBottom: 'var(--space-lg)',
+              color: 'var(--text)'
+            }}>
+              Whether it's clothing, home furniture, beauty essentials, or study materials, we source quality items 
+              and bring them directly to your doorstep — no long queues, no complicated processes.
+            </p>
+            <p style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.8',
+              color: 'var(--text)'
+            }}>
+              <strong>Simple. Safe. Convenient. Plugged into your everyday life.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
 }
