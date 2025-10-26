@@ -1,37 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import WhatsAppFloat from './components/WhatsAppFloat'
-import Home from './pages/Home'
-import ProductDetail from './pages/ProductDetail'
-import Category from './pages/Category'
-import Cart from './pages/Cart'
-import About from './pages/About'
-import Terms from './pages/Terms'
-import Privacy from './pages/Privacy'
-import Returns from './pages/Returns'
+import React from 'react'
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:sku" element={<ProductDetail />} />
-            <Route path="/category/:slug" element={<Category />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/returns" element={<Returns />} />
-          </Routes>
-        </main>
-        <Footer />
-        <WhatsAppFloat />
-      </div>
-    </Router>
+    <div style={{ 
+      padding: '2rem', 
+      textAlign: 'center',
+      fontFamily: 'Arial, sans-serif'
+    }}>
+      <h1 style={{ color: '#2E8B57' }}>🚀 PlugMeUp.co.za</h1>
+      <p>Welcome to your store! If you can see this, it's working!</p>
+      <p>📍 Serving Kempton Park, Midrand & surrounding townships</p>
+      <button style={{
+        padding: '1rem 2rem',
+        backgroundColor: '#2E8B57',
+        color: 'white',
+        border: 'none',
+        borderRadius: '8px',
+        fontSize: '1.2rem',
+        marginTop: '1rem'
+      }}>
+        Shop Now
+      </button>
+    </div>
   )
 }
 
