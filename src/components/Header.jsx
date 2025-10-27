@@ -8,7 +8,8 @@ export default function Header() {
       padding: 'var(--space-md) 0',
       position: 'sticky',
       top: 0,
-      zIndex: 100
+      zIndex: 100,
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
     }}>
       <div className="container">
         <div style={{
@@ -22,20 +23,23 @@ export default function Header() {
             color: 'white',
             textDecoration: 'none',
             fontSize: '1.5rem',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--space-sm)'
           }}>
-            🛍️ YourStore
+            🛍️ PlugMeUp
           </Link>
 
           {/* Search Bar */}
-          <div style={{ flex: 1, maxWidth: '600px' }}>
+          <div style={{ flex: 1, maxWidth: '500px' }}>
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search products, categories..."
               style={{
                 width: '100%',
                 padding: 'var(--space-sm) var(--space-md)',
-                borderRadius: '4px',
+                borderRadius: '24px',
                 border: 'none',
                 fontSize: '1rem'
               }}
