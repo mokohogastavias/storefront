@@ -68,11 +68,16 @@ body {
   padding: 0 var(--space-md);
 }
 
-/* Typography */
+/* Enhanced Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
+  font-weight: 700; /* Changed from 600 to 700 for bolder headings */
   line-height: 1.25;
+  font-family: 'Inter', sans-serif;
 }
+/* Add specific heading sizes */
+h1 { font-size: 2.5rem; font-weight: 800; }
+h2 { font-size: 2rem; font-weight: 700; }
+h3 { font-size: 1.5rem; font-weight: 600; }
 
 .text-sm { font-size: 0.875rem; }
 .text-base { font-size: 1rem; }
@@ -95,6 +100,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Professional Buttons */
 .btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -149,6 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Cards */
 .card {
+  font-family: 'Inter', sans-serif;
   background: white;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
