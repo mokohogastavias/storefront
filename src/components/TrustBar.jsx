@@ -1,55 +1,45 @@
 export default function TrustBar() {
   return (
     <section style={{
-      backgroundColor: '#F8F9FA',
-      padding: 'var(--space-md) 0',
-      borderBottom: '1px solid var(--border)'
+      backgroundColor: 'white',
+      padding: 'var(--space-lg) 0',
+      borderBottom: '1px solid var(--border-light)',
+      boxShadow: 'var(--shadow-sm)'
     }}>
-      <div className="container">
-        <div className="grid grid-3" style={{ textAlign: 'center' }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 'var(--space-sm)',
-            padding: 'var(--space-md)'
-          }}>
-            <span style={{ fontSize: '1.5rem' }}>📞</span>
-            <div>
-              <strong>068 617 2855</strong>
-              <div style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>Call Us</div>
+      <div className="container-wide">
+        <div className="grid grid-4">
+          {[
+            { icon: '🚚', title: 'Free Delivery', desc: 'On orders over R500' },
+            { icon: '💳', title: 'Secure Payment', desc: 'PayFast protected' },
+            { icon: '↩️', title: 'Easy Returns', desc: '7-day return policy' },
+            { icon: '📞', title: 'Local Support', desc: '068 617 2855' }
+          ].map((item, index) => (
+            <div key={index} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--space-md)',
+              padding: 'var(--space-sm)'
+            }}>
+              <div style={{
+                fontSize: '2rem',
+                background: 'var(--background-light)',
+                padding: 'var(--space-sm)',
+                borderRadius: 'var(--radius-md)'
+              }}>
+                {item.icon}
+              </div>
+              <div>
+                <div style={{ fontWeight: '600', fontSize: '0.875rem' }}>
+                  {item.title}
+                </div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>
+                  {item.desc}
+                </div>
+              </div>
             </div>
-          </div>
-          
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 'var(--space-sm)',
-            padding: 'var(--space-md)'
-          }}>
-            <span style={{ fontSize: '1.5rem' }}>💬</span>
-            <div>
-              <strong>WhatsApp Us</strong>
-              <div style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>Instant Help</div>
-            </div>
-          </div>
-          
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 'var(--space-sm)',
-            padding: 'var(--space-md)'
-          }}>
-            <span style={{ fontSize: '1.5rem' }}>📧</span>
-            <div>
-              <strong>info@plugmeup.co.za</strong>
-              <div style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>Email Support</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
