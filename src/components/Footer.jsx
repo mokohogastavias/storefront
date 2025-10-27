@@ -34,10 +34,10 @@ export default function Footer() {
           <div>
             <h3 style={{ marginBottom: 'var(--space-md)' }}>Quick Links</h3>
             <div style={{ color: '#ccc', lineHeight: '2' }}>
-              <div><Link to="/about" style={{ color: '#ccc', textDecoration: 'none' }}>About Us</Link></div>
-              <div><Link to="/terms" style={{ color: '#ccc', textDecoration: 'none' }}>Terms & Conditions</Link></div>
-              <div><Link to="/privacy" style={{ color: '#ccc', textDecoration: 'none' }}>Privacy Policy</Link></div>
-              <div><Link to="/returns" style={{ color: '#ccc', textDecoration: 'none' }}>Returns & Refunds</Link></div>
+              <div><Link to="/" style={{ color: '#ccc', textDecoration: 'none' }}>Home</Link></div>
+              <div><Link to="/cart" style={{ color: '#ccc', textDecoration: 'none' }}>Shopping Cart</Link></div>
+              <div style={{ color: '#ccc' }}>About Us</div>
+              <div style={{ color: '#ccc' }}>Contact</div>
             </div>
           </div>
 
@@ -60,7 +60,7 @@ export default function Footer() {
           textAlign: 'center',
           color: '#ccc'
         }}>
-          <p>&copy; 2024 PlugMeUp.co.za. All rights reserved. CIPC Registration Pending</p>
+          <p>&copy; 2024 PlugMeUp.co.za. All rights reserved.</p>
           <p style={{ marginTop: 'var(--space-sm)', fontSize: '0.9rem' }}>
             We bring what you need closer
           </p>
