@@ -1,12 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PlugMeUp.co.za - Affordable Essentials Delivered</title>
-  </head>
-  <body>
+    
+    <!-- Primary Meta Tags -->
+    <title>PlugMeUp.co.za - Affordable Essentials Delivered to Your Doorstep | Kempton Park & Midrand</title>
+    <meta name="title" content="PlugMeUp.co.za - Affordable Essentials Delivered to Your Doorstep">
+    <meta name="description" content="Kempton Park & Midrand's trusted online store. Fast delivery of books, clothing, home goods, beauty products & more. WhatsApp: 068 617 2855">
+    <meta name="keywords" content="online store, Kempton Park, Midrand, township delivery, affordable products, South Africa ecommerce">
+    <meta name="author" content="PlugMeUp">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://plugmeup.co.za/">
+    <meta property="og:title" content="PlugMeUp.co.za - Affordable Essentials Delivered to Your Doorstep">
+    <meta property="og:description" content="Kempton Park & Midrand's trusted online store. Fast delivery of books, clothing, home goods & more.">
+    <meta property="og:image" content="https://plugmeup.co.za/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://plugmeup.co.za/">
+    <meta property="twitter:title" content="PlugMeUp.co.za - Affordable Essentials Delivered">
+    <meta property="twitter:description" content="Kempton Park & Midrand's trusted online store. Fast delivery of affordable products.">
+    <meta property="twitter:image" content="https://plugmeup.co.za/twitter-image.jpg">
+    
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Variables for Theme -->
+    <style>
+        :root {
+            --primary: #ff9900;
+            --primary-dark: #e68900;
+            --secondary: #232f3e;
+            --accent: #b12704;
+            --text: #0f1111;
+            --text-light: #565959;
+            --background: #ffffff;
+            --border: #d5d9d9;
+        }
+        
+        /* Critical Above-the-Fold Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fafafa;
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Loading State */
+        #root:empty::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        #root:empty::after {
+            content: '🛍️ Loading PlugMeUp...';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
     <div id="root"></div>
+    
+    <!-- Performance & Analytics Scripts (to be added later) -->
+    <script>
+        // Simple loading state management
+        window.addEventListener('load', function() {
+            // Remove any loading states once React app mounts
+            setTimeout(() => {
+                const root = document.getElementById('root');
+                if (root && root.children.length > 0) {
+                    // App has loaded, remove loading styles
+                    document.body.style.background = '';
+                }
+            }, 100);
+        });
+        
+        // Error boundary for initial load
+        window.addEventListener('error', function(e) {
+            console.error('Application error:', e.error);
+        });
+    </script>
+    
     <script type="module" src="/src/main.jsx"></script>
-  </body>
+</body>
 </html>
