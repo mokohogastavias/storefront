@@ -4,9 +4,10 @@ export default function ProductDetail() {
   const { sku } = useParams()
 
   return (
-    <div className="container" style={{ padding: 'var(--space-xl) 0' }}>
-      <h1>Product Detail Page - SKU: {sku}</h1>
-      <p>This page will show individual product details</p>
+    <div className="container" style={{ padding: 'var(--space-2xl) 0', minHeight: '50vh' }}>
+      <h1>Product Details</h1>
+      <p>Product SKU: {sku}</p>
+      <p>This page will show individual product details, images, and purchase options.</p>
     </div>
   )
 }
