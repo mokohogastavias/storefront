@@ -1,48 +1,82 @@
 import TrustBar from '../components/TrustBar'
+import ProductCard from '../components/ProductCard'
 
 export default function Home() {
-  const scrollToCategories = () => {
-    document.getElementById('categories')?.scrollIntoView({ 
-      behavior: 'smooth' 
-    });
-  };
+  const featuredProducts = [
+    { id: 1, name: 'Wireless Earbuds', price: 299, originalPrice: 499, rating: 4.5, reviews: 128, image: '🎧', badge: 'hot' },
+    { id: 2, name: 'Smart Watch', price: 799, originalPrice: 999, rating: 4.2, reviews: 89, image: '⌚', badge: 'sale' },
+    { id: 3, name: 'Backpack', price: 449, originalPrice: 599, rating: 4.7, reviews: 256, image: '🎒', badge: 'new' },
+    { id: 4, name: 'Water Bottle', price: 199, originalPrice: 299, rating: 4.3, reviews: 167, image: '💧', badge: null },
+    { id: 5, name: 'Desk Lamp', price: 349, originalPrice: 449, rating: 4.1, reviews: 93, image: '💡', badge: 'sale' },
+    { id: 6, name: 'Phone Case', price: 149, originalPrice: 199, rating: 4.6, reviews: 312, image: '📱', badge: 'hot' }
+  ]
 
   return (
-    <div>
-      {/* Hero Section */}
+    <div style={{ backgroundColor: 'var(--background-light)' }}>
+      {/* Hero Carousel */}
       <section style={{
-        background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
-        padding: 'var(--space-2xl) 0',
+        background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
+        padding: 'var(--space-3xl) 0',
         color: 'white',
-        textAlign: 'center'
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div className="container">
-          <h1 style={{ 
-            fontSize: '2.5rem', 
-            marginBottom: 'var(--space-md)',
-            fontWeight: '700'
+        <div className="container-wide">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 'var(--space-2xl)',
+            alignItems: 'center'
           }}>
-            Affordable Essentials Delivered to Your Doorstep
-          </h1>
-          <p style={{ 
-            fontSize: '1.3rem',
-            marginBottom: 'var(--space-xl)',
-            opacity: '0.9'
-          }}>
-            We bring what you need closer to Kempton Park, Midrand & surrounding townships
-          </p>
-          
-          <button 
-            onClick={scrollToCategories}
-            className="btn btn-accent"
-            style={{
-              fontSize: '1.2rem',
-              padding: 'var(--space-lg) var(--space-2xl)',
-              margin: '0 auto'
-            }}
-          >
-            🛍️ Shop Now
-          </button>
+            <div>
+              <h1 style={{ 
+                fontSize: '3rem', 
+                marginBottom: 'var(--space-md)',
+                fontWeight: '700',
+                lineHeight: '1.1'
+              }}>
+                Affordable Essentials
+                <br />
+                <span style={{ color: 'var(--secondary)' }}>Delivered to You</span>
+              </h1>
+              <p style={{ 
+                fontSize: '1.25rem',
+                marginBottom: 'var(--space-2xl)',
+                opacity: '0.9',
+                lineHeight: '1.6'
+              }}>
+                Serving Kempton Park, Midrand, and surrounding townships with fast delivery and trusted service.
+              </p>
+              
+              <div style={{ display: 'flex', gap: 'var(--space-md)', flexWrap: 'wrap' }}>
+                <button className="btn btn-secondary" style={{ fontSize: '1.1rem', padding: 'var(--space-lg) var(--space-2xl)' }}>
+                  🛍️ Start Shopping
+                </button>
+                <button className="btn" style={{ 
+                  background: 'rgba(255,255,255,0.2)', 
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  color: 'white',
+                  fontSize: '1.1rem',
+                  padding: 'var(--space-lg) var(--space-2xl)'
+                }}>
+                  📞 Call to Order
+                </button>
+              </div>
+            </div>
+            
+            <div style={{
+              background: 'rgba(255,255,255,0.1)',
+              borderRadius: 'var(--radius-xl)',
+              padding: 'var(--space-2xl)',
+              textAlign: 'center',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <div style={{ fontSize: '8rem', marginBottom: 'var(--space-md)' }}>🛒</div>
+              <p style={{ fontSize: '1.1rem', opacity: '0.9' }}>
+                Fast Delivery • Easy Returns • Trusted Service
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -50,150 +84,108 @@ export default function Home() {
       <TrustBar />
 
       {/* Categories Section */}
-      <section id="categories" style={{ padding: 'var(--space-2xl) 0' }}>
-        <div className="container">
-          <h2 style={{ 
-            textAlign: 'center',
-            marginBottom: 'var(--space-xl)',
-            fontSize: '2rem',
-            color: 'var(--secondary)'
+      <section className="container-wide" style={{ padding: 'var(--space-3xl) 0' }}>
+        <h2 style={{ 
+          textAlign: 'center',
+          marginBottom: 'var(--space-2xl)',
+          fontSize: '2.25rem',
+          color: 'var(--text)'
+        }}>
+          Shop Popular Categories
+        </h2>
+        
+        <div className="grid grid-5">
+          {[
+            { emoji: '📚', name: 'Books & Education', items: '124 products' },
+            { emoji: '👕', name: 'Clothing & Shoes', items: '89 products' },
+            { emoji: '🎁', name: 'Gift Vouchers', items: '32 products' },
+            { emoji: '💄', name: 'Health & Beauty', items: '156 products' },
+            { emoji: '🏠', name: 'Home & Living', items: '78 products' }
+          ].map((category, index) => (
+            <div key={index} className="card" style={{ textAlign: 'center', padding: 'var(--space-xl)' }}>
+              <div style={{ fontSize: '3.5rem', marginBottom: 'var(--space-md)' }}>
+                {category.emoji}
+              </div>
+              <h3 style={{ 
+                marginBottom: 'var(--space-sm)',
+                fontSize: '1.125rem',
+                fontWeight: '600'
+              }}>
+                {category.name}
+              </h3>
+              <p style={{ 
+                fontSize: '0.875rem',
+                color: 'var(--text-light)',
+                marginBottom: 'var(--space-md)'
+              }}>
+                {category.items}
+              </p>
+              <button className="btn btn-outline" style={{ width: '100%' }}>
+                Shop Now
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section style={{ backgroundColor: 'white', padding: 'var(--space-3xl) 0' }}>
+        <div className="container-wide">
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            marginBottom: 'var(--space-2xl)'
           }}>
-            Shop By Category
-          </h2>
+            <h2 style={{ fontSize: '2rem', color: 'var(--text)' }}>
+              🔥 Hot Deals of the Week
+            </h2>
+            <button className="btn btn-outline">
+              View All Deals
+            </button>
+          </div>
           
-          <div className="grid grid-5">
-            {/* Books & Education */}
-            <div style={{
-              padding: 'var(--space-lg)',
-              border: '2px solid var(--border)',
-              borderRadius: '12px',
-              textAlign: 'center',
-              transition: 'all 0.3s ease',
-              backgroundColor: 'white',
-              cursor: 'pointer'
-            }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)' }}>📚</div>
-              <h3 style={{ marginBottom: 'var(--space-sm)', fontSize: '1.1rem' }}>
-                Books & Education
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>
-                Stationery, study aids, kids learning
-              </p>
-            </div>
-
-            {/* Clothing */}
-            <div style={{
-              padding: 'var(--space-lg)',
-              border: '2px solid var(--border)',
-              borderRadius: '12px',
-              textAlign: 'center',
-              transition: 'all 0.3s ease',
-              backgroundColor: 'white',
-              cursor: 'pointer'
-            }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)' }}>👕</div>
-              <h3 style={{ marginBottom: 'var(--space-sm)', fontSize: '1.1rem' }}>
-                Clothing & Shoes
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>
-                Everyday wear, urban styles
-              </p>
-            </div>
-
-            {/* Gift Vouchers */}
-            <div style={{
-              padding: 'var(--space-lg)',
-              border: '2px solid var(--border)',
-              borderRadius: '12px',
-              textAlign: 'center',
-              transition: 'all 0.3s ease',
-              backgroundColor: 'white',
-              cursor: 'pointer'
-            }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)' }}>🎁</div>
-              <h3 style={{ marginBottom: 'var(--space-sm)', fontSize: '1.1rem' }}>
-                Gift Vouchers
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>
-                Digital vouchers to send or redeem
-              </p>
-            </div>
-
-            {/* Health & Beauty */}
-            <div style={{
-              padding: 'var(--space-lg)',
-              border: '2px solid var(--border)',
-              borderRadius: '12px',
-              textAlign: 'center',
-              transition: 'all 0.3s ease',
-              backgroundColor: 'white',
-              cursor: 'pointer'
-            }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)' }}>💄</div>
-              <h3 style={{ marginBottom: 'var(--space-sm)', fontSize: '1.1rem' }}>
-                Health & Beauty
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>
-                Skincare, hair products, hygiene
-              </p>
-            </div>
-
-            {/* Home & Living */}
-            <div style={{
-              padding: 'var(--space-lg)',
-              border: '2px solid var(--border)',
-              borderRadius: '12px',
-              textAlign: 'center',
-              transition: 'all 0.3s ease',
-              backgroundColor: 'white',
-              cursor: 'pointer'
-            }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)' }}>🏠</div>
-              <h3 style={{ marginBottom: 'var(--space-sm)', fontSize: '1.1rem' }}>
-                Home & Living
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>
-                Furniture, chairs, stands, shelves
-              </p>
-            </div>
+          <div className="grid grid-6">
+            {featuredProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Brand Story */}
-      <section style={{ 
-        padding: 'var(--space-2xl) 0',
-        backgroundColor: '#F7FAFC'
-      }}>
+      {/* Value Propositions */}
+      <section style={{ padding: 'var(--space-3xl) 0', backgroundColor: 'var(--background-dark)' }}>
         <div className="container">
-          <div style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            textAlign: 'center'
-          }}>
-            <h2 style={{ 
-              marginBottom: 'var(--space-lg)',
-              fontSize: '2rem',
-              color: 'var(--secondary)'
-            }}>
-              About PlugMeUp
-            </h2>
-            <p style={{
-              fontSize: '1.1rem',
-              lineHeight: '1.8',
-              marginBottom: 'var(--space-lg)',
-              color: 'var(--text)'
-            }}>
-              PlugMeUp.co.za is a community-focused online store based in Kempton Park and serving surrounding townships. 
-              We believe everyday items should be affordable, easy to access, and delivered with trust.
-            </p>
-            <p style={{
-              fontSize: '1.1rem',
-              lineHeight: '1.8',
-              color: 'var(--text)'
-            }}>
-              <strong>Simple. Safe. Convenient. Plugged into your everyday life.</strong>
-            </p>
+          <div className="grid grid-3">
+            {[
+              { icon: '🚚', title: 'Fast Delivery', desc: '1-3 day delivery in Kempton Park & surrounding areas' },
+              { icon: '💳', title: 'Secure Payment', desc: 'PayFast secured payments with multiple options' },
+              { icon: '📞', title: 'Local Support', desc: 'Dedicated WhatsApp & phone support for local customers' }
+            ].map((item, index) => (
+              <div key={index} style={{ textAlign: 'center', padding: 'var(--space-xl)' }}>
+                <div style={{ 
+                  fontSize: '3rem', 
+                  marginBottom: 'var(--space-md)',
+                  background: 'white',
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto var(--space-md) auto',
+                  boxShadow: 'var(--shadow-md)'
+                }}>
+                  {item.icon}
+                </div>
+                <h3 style={{ marginBottom: 'var(--space-sm)', fontSize: '1.25rem' }}>
+                  {item.title}
+                </h3>
+                <p style={{ color: 'var(--text-light)', lineHeight: '1.6' }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
