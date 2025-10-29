@@ -1,120 +1,85 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useCartAnimation } from './CartAnimator'
+import './ProductCard.css'
 
 export default function ProductCard({ product }) {
+  const [isHovered, setIsHovered] = useState(false)
+  const [isAdding, setIsAdding] = useState(false)
+  const { animateAddToCart } = useCartAnimation()
+
   const discount = product.originalPrice ? 
     Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0
 
+  const handleAddToCart = (e) => {
+    e.stopPropagation()
+    setIsAdding(true)
+    
+    // Trigger fly animation
+    animateAddToCart(e.currentTarget, product)
+    
+    // Reset loading state
+    setTimeout(() => setIsAdding(false), 600)
+  }
+
   return (
-    <div className="card" style={{ padding: 'var(--space-md)', height: '100%' }}>
-      {/* Badge */}
+    <div 
+      className={`product-card ${isHovered ? 'card-hovered' : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Badges */}
       {product.badge && (
-        <div style={{ 
-          position: 'absolute', 
-          top: 'var(--space-sm)', 
-          left: 'var(--space-sm)',
-          zIndex: 2
-        }}>
-          <span className={`badge badge-${product.badge === 'hot' ? 'accent' : product.badge === 'sale' ? 'primary' : 'success'}`}>
+        <div className="product-badges">
+          <span className={`badge badge-${product.badge}`}>
             {product.badge}
           </span>
-        </div>
-      )}
-      
-      {/* Discount Badge */}
-      {discount > 0 && (
-        <div style={{ 
-          position: 'absolute', 
-          top: 'var(--space-sm)', 
-          right: 'var(--space-sm)',
-          background: 'var(--accent)',
-          color: 'white',
-          padding: 'var(--space-xs) var(--space-sm)',
-          borderRadius: 'var(--radius-sm)',
-          fontSize: '0.75rem',
-          fontWeight: '600',
-          zIndex: 2
-        }}>
-          {discount}% OFF
+          {discount > 0 && (
+            <span className="badge badge-discount">
+              {discount}% OFF
+            </span>
+          )}
         </div>
       )}
 
       {/* Product Image */}
-      <div style={{
-        width: '100%',
-        height: '160px',
-        backgroundColor: 'var(--background-light)',
-        borderRadius: 'var(--radius-md)',
-        marginBottom: 'var(--space-md)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '4rem',
-        position: 'relative'
-      }}>
+      <div className="product-image">
         {product.image}
+        <div className={`quick-add ${isHovered ? 'quick-add-visible' : ''}`}>
+          <button 
+            className={`quick-add-btn ${isAdding ? 'quick-add-loading' : ''}`}
+            onClick={handleAddToCart}
+            disabled={isAdding}
+          >
+            {isAdding ? 'Adding...' : 'Add to Cart'}
+          </button>
+        </div>
       </div>
 
       {/* Product Info */}
-      <div style={{ flex: 1 }}>
-        <h3 style={{ 
-          marginBottom: 'var(--space-sm)',
-          fontSize: '0.875rem',
-          lineHeight: '1.4',
-          height: '2.8rem',
-          overflow: 'hidden',
-          display: '-webkit-box',
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: 'vertical'
-        }}>
-          <Link to={`/product/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-            {product.name}
-          </Link>
+      <div className="product-info">
+        <h3 className="product-title">
+          {product.name}
         </h3>
 
         {/* Rating */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', marginBottom: 'var(--space-sm)' }}>
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center',
-            background: 'var(--success)',
-            color: 'white',
-            padding: 'var(--space-xs) var(--space-sm)',
-            borderRadius: 'var(--radius-sm)',
-            fontSize: '0.75rem',
-            fontWeight: '600'
-          }}>
-            ⭐ {product.rating}
-          </div>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>
-            ({product.reviews})
-          </span>
+        <div className="product-rating">
+          <span className="rating-stars">⭐ {product.rating}</span>
+          <span className="rating-count">({product.reviews})</span>
         </div>
 
         {/* Price */}
-        <div style={{ marginBottom: 'var(--space-md)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '1.25rem', fontWeight: '600', color: 'var(--accent)' }}>
-              R {product.price}
-            </span>
-            {product.originalPrice && (
-              <span style={{ 
-                fontSize: '0.875rem', 
-                color: 'var(--text-light)', 
-                textDecoration: 'line-through' 
-              }}>
-                R {product.originalPrice}
-              </span>
-            )}
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--success)' }}>
-            ✓ In stock • Free delivery
-          </div>
+        <div className="product-pricing">
+          <span className="product-price">R {product.price}</span>
+          {product.originalPrice && (
+            <span className="product-original-price">R {product.originalPrice}</span>
+          )}
         </div>
 
-        {/* CTA Button */}
-        <button className="btn btn-primary" style={{ width: '100%' }}>
-          Add to Cart
-        </button>
+        {/* Stock & Delivery */}
+        <div className="product-meta">
+          <span className="stock-status">✓ In stock</span>
+          <span className="delivery-info">• Free delivery</span>
+        </div>
       </div>
     </div>
   )
