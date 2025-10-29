@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 
 export default function Header() {
+  const { cartIconRef } = useCartAnimation()
+
   return (
     <header style={{
       backgroundColor: 'var(--navy)',
@@ -10,34 +12,13 @@ export default function Header() {
       top: 0,
       zIndex: 1000
     }}>
+      
       {/* Top Bar */}
       <div style={{
-        backgroundColor: '#0f2240', // Darker navy
+        backgroundColor: '#0f2240',
         padding: 'var(--space-sm) 0',
         fontSize: '0.875rem'
       }}>
-
-<Link to="/" style={{
-  color: 'white',
-  textDecoration: 'none',
-  fontSize: '1.5rem',
-  fontWeight: 'bold',
-  display: 'flex',
-  alignItems: 'center',
-  gap: 'var(--space-sm)',
-    minWidth: '140px'
-}}>
-  <div style={{
-    background: 'var(--electric-blue)',
-    padding: 'var(--space-sm)',
-    borderRadius: 'var(--radius-md)',
-    fontSize: '1.25rem'
-  }}>
-    🔌
-  </div>
-  PlugMeUp
-</Link>
-}}>
         <div className="container-wide">
           <div style={{
             display: 'flex',
@@ -71,6 +52,7 @@ export default function Header() {
           alignItems: 'center',
           gap: 'var(--space-lg)'
         }}>
+          
           {/* Logo */}
           <Link to="/" style={{
             color: 'white',
@@ -83,7 +65,7 @@ export default function Header() {
             minWidth: '140px'
           }}>
             <div style={{
-              background: 'var(--primary)',
+              background: 'var(--electric-blue)',
               padding: 'var(--space-sm)',
               borderRadius: 'var(--radius-md)',
               fontSize: '1.25rem'
@@ -131,24 +113,29 @@ export default function Header() {
               <div style={{ fontSize: '0.875rem', fontWeight: '600' }}>Account & Lists</div>
             </div>
             
-            <Link to="/cart" style={{
-              color: 'white',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--space-sm)',
-              padding: 'var(--space-sm) var(--space-md)',
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid transparent',
-              transition: 'all 0.15s ease'
-            }}>
+            <Link 
+              to="/cart" 
+              ref={cartIconRef}
+              className="cart-link motion-press"
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-sm)',
+                padding: 'var(--space-sm) var(--space-md)',
+                borderRadius: 'var(--radius-sm)',
+                border: '1px solid transparent',
+                transition: 'all 0.15s ease'
+              }}
+            >
               <div style={{ position: 'relative' }}>
                 🛒
                 <span style={{
                   position: 'absolute',
                   top: '-8px',
                   right: '-8px',
-                  background: 'var(--primary)',
+                  background: 'var(--electric-blue)',
                   color: 'white',
                   borderRadius: '50%',
                   width: '18px',
@@ -172,7 +159,7 @@ export default function Header() {
 
       {/* Categories Bar */}
       <div style={{
-        backgroundColor: 'var(--secondary-light)',
+        backgroundColor: '#0f2240',
         borderTop: '1px solid rgba(255,255,255,0.1)'
       }}>
         <div className="container-wide">
