@@ -183,6 +183,7 @@
   100% { background-position: -200% 0; }
 }
 
+/* Update specific color-related animations */
 .btn-primary {
   background: var(--electric-blue);
   border-color: var(--electric-blue);
@@ -198,4 +199,3 @@
 .badge-success { background: var(--success-green); color: white; }
 .badge-accent { background: var(--sunshine-yellow); color: var(--text); }
 .badge-warning { background: var(--action-red); color: white; }
-}
