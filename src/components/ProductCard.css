@@ -14,7 +14,46 @@
   border-color: var(--electric-blue);
 }
 
-/* Quick Add Button - Electric Blue */
+.product-badges {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* Product Image with Quick Add */
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: var(--background-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  overflow: hidden;
+}
+
+.quick-add {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  padding: var(--space-lg) var(--space-md) var(--space-md) var(--space-md);
+  transform: translateY(100%);
+  transition: transform var(--motion-standard) var(--ease-out-cubic);
+}
+
+.quick-add-visible {
+  transform: translateY(0);
+}
+
 .quick-add-btn {
   width: 100%;
   background: var(--electric-blue);
@@ -30,6 +69,11 @@
 .quick-add-btn:hover:not(:disabled) {
   background: #2563eb;
   transform: var(--lift-small);
+}
+
+.quick-add-loading {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 /* Badges with Brand Colors */
@@ -70,3 +114,18 @@
   color: var(--success-green);
   font-weight: 500;
 }
+
+/* Staggered animation for grid */
+.product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp var(--motion-standard) var(--ease-out-cubic) forwards;
+}
+
+/* Apply staggered delays based on grid position */
+.product-card:nth-child(1) { animation-delay: calc(1 * var(--stagger-short)); }
+.product-card:nth-child(2) { animation-delay: calc(2 * var(--stagger-short)); }
+.product-card:nth-child(3) { animation-delay: calc(3 * var(--stagger-short)); }
+.product-card:nth-child(4) { animation-delay: calc(4 * var(--stagger-short)); }
+.product-card:nth-child(5) { animation-delay: calc(5 * var(--stagger-short)); }
+.product-card:nth-child(6) { animation-delay: calc(6 * var(--stagger-short)); }
