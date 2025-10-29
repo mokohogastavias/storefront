@@ -1,0 +1,72 @@
+.product-card {
+  position: relative;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  transition: all var(--motion-standard) var(--ease-out-cubic);
+  overflow: hidden;
+}
+
+.product-card.card-hovered {
+  transform: var(--hover-scale);
+  box-shadow: 0 8px 25px rgba(26, 54, 93, 0.1);
+  border-color: var(--electric-blue);
+}
+
+/* Quick Add Button - Electric Blue */
+.quick-add-btn {
+  width: 100%;
+  background: var(--electric-blue);
+  color: white;
+  border: none;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--motion-short) var(--ease-out-cubic);
+}
+
+.quick-add-btn:hover:not(:disabled) {
+  background: #2563eb;
+  transform: var(--lift-small);
+}
+
+/* Badges with Brand Colors */
+.badge-hot {
+  background: var(--action-red);
+  color: white;
+}
+
+.badge-sale {
+  background: var(--electric-blue);
+  color: white;
+}
+
+.badge-new {
+  background: var(--success-green);
+  color: white;
+}
+
+.badge-discount {
+  background: var(--sunshine-yellow);
+  color: var(--text);
+}
+
+/* Pricing with Brand Colors */
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--electric-blue);
+}
+
+.product-original-price {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
+.stock-status {
+  color: var(--success-green);
+  font-weight: 500;
+}
