@@ -1,0 +1,160 @@
+/* PlugMeUp Motion Design System */
+:root {
+  /* Motion Timing */
+  --motion-short: 150ms;
+  --motion-standard: 300ms;
+  --motion-long: 500ms;
+  --motion-extra-long: 700ms;
+  
+  /* Easing Curves */
+  --ease-out-cubic: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Animation Delays */
+  --stagger-short: 40ms;
+  --stagger-medium: 60ms;
+  --stagger-long: 100ms;
+  
+  /* Transform Values */
+  --lift-small: translateY(-2px);
+  --lift-medium: translateY(-4px);
+  --press-scale: scale(0.97);
+  --hover-scale: scale(1.02);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-short: 0ms;
+    --motion-standard: 0ms;
+    --motion-long: 0ms;
+    --motion-extra-long: 0ms;
+    --stagger-short: 0ms;
+    --stagger-medium: 0ms;
+    --stagger-long: 0ms;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Base Animation Classes */
+.motion-safe {
+  transition: all var(--motion-standard) var(--ease-out-cubic);
+}
+
+.motion-lift {
+  transition: transform var(--motion-short) var(--ease-out-cubic);
+}
+
+.motion-lift:hover {
+  transform: var(--lift-small);
+}
+
+.motion-press {
+  transition: transform var(--motion-short) var(--ease-out-cubic);
+}
+
+.motion-press:active {
+  transform: var(--press-scale);
+}
+
+/* Fade Animations */
+.fade-in {
+  animation: fadeIn var(--motion-standard) var(--ease-out-cubic);
+}
+
+.fade-out {
+  animation: fadeOut var(--motion-standard) var(--ease-out-cubic);
+}
+
+.slide-up {
+  animation: slideUp var(--motion-standard) var(--ease-out-cubic);
+}
+
+.slide-down {
+  animation: slideDown var(--motion-standard) var(--ease-out-cubic);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes strokeDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes microBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+  60% { transform: translateY(-3px); }
+}
+
+@keyframes gentleShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s infinite;
+}
+
+@keyframes skeletonLoading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
