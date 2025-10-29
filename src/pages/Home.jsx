@@ -15,7 +15,7 @@ export default function Home() {
     <div style={{ backgroundColor: 'var(--background-light)' }}>
       {/* Hero Carousel */}
       <section style={{
-        background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
+        background: 'linear-gradient(135deg, var(--electric-blue) 0%, var(--navy) 100%)',
         padding: 'var(--space-3xl) 0',
         color: 'white',
         position: 'relative',
