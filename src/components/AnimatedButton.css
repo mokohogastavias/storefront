@@ -1,0 +1,63 @@
+.animated-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--motion-short) var(--ease-out-cubic);
+  transform-origin: center;
+  border: 1px solid transparent;
+}
+
+/* Primary Button - Electric Blue */
+.btn-primary {
+  background: var(--electric-blue);
+  border-color: var(--electric-blue);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled):not(.btn-loading) {
+  background: #2563eb;
+  border-color: #2563eb;
+  transform: var(--lift-small);
+  box-shadow: 0 4px 12px rgba(45, 116, 218, 0.3);
+}
+
+/* Secondary Button - Navy */
+.btn-secondary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled):not(.btn-loading) {
+  background: #0f2240;
+  border-color: #0f2240;
+}
+
+/* Accent Button - Sunshine Yellow */
+.btn-accent {
+  background: var(--sunshine-yellow);
+  border-color: var(--sunshine-yellow);
+  color: var(--text);
+}
+
+.btn-accent:hover:not(:disabled):not(.btn-loading) {
+  background: #e5a10e;
+  border-color: #e5a10e;
+}
+
+/* Outline Button - Navy Borders */
+.btn-outline {
+  background: white;
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.btn-outline:hover:not(:disabled):not(.btn-loading) {
+  background: var(--navy);
+  color: white;
+}
+
+/* Focus States with Brand Colors */
+.animated-btn:focus-visible {
+  outline: 2px solid var(--sunshine-yellow);
+  outline-offset: 2px;
+}
