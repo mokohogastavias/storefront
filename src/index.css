@@ -5,26 +5,31 @@
 }
 
 :root {
-  /* Professional Color Scheme - Amazon/Takealot Inspired */
-  --primary: #ff9900;           /* Amazon orange */
-  --primary-dark: #e68900;
-  --primary-light: #ffb366;
-  --secondary: #232f3e;         /* Amazon dark blue */
-  --secondary-light: #37475a;
-  --accent: #b12704;            /* Amazon red for deals */
-  --success: #007600;
-  --warning: #ffa41c;
+  /* PlugMeUp Brand Colors */
+  --navy: #1a365d;
+  --electric-blue: #2d74da;
+  --sunshine-yellow: #f7b32b;
+  --action-red: #e53e3e;
+  --success-green: #38a169;
+  --clean-white: #f8f9fa;
+  
+  /* Semantic Mapping */
+  --primary: var(--navy);
+  --primary-dark: #0f2240;
+  --secondary: var(--electric-blue);
+  --accent: var(--sunshine-yellow);
+  --error: var(--action-red);
+  --success: var(--success-green);
+  --background: var(--clean-white);
   
   /* Neutral Colors */
-  --text: #0f1111;
-  --text-light: #565959;
-  --text-lighter: #767676;
-  --background: #ffffff;
-  --background-light: #fafafa;
-  --background-dark: #f0f2f2;
-  --border: #d5d9d9;
-  --border-light: #e7e7e7;
-  --border-dark: #a2a6ac;
+  --text: #1a202c;
+  --text-light: #4a5568;
+  --text-lighter: #718096;
+  --border: #e2e8f0;
+  --border-dark: #cbd5e0;
+  --background-light: #ffffff;
+  --background-dark: #edf2f7;
   
   /* Spacing */
   --space-xs: 0.25rem;
@@ -49,10 +54,10 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color: var(--text);
-  line-height: 1.5;
-  background-color: var(--background-light);
+  line-height: 1.6;
+  background-color: var(--clean-white);
   -webkit-font-smoothing: antialiased;
 }
 
