@@ -1,0 +1,77 @@
+.site-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--clean-white);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo Animation - Updated Colors */
+.logo-bag {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: strokeDraw var(--motion-extra-long) var(--ease-out-cubic) forwards;
+  stroke: var(--navy);
+  stroke-width: 4;
+}
+
+.logo-plug-handle {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: strokeDraw var(--motion-long) var(--ease-out-cubic) 200ms forwards;
+  stroke: var(--electric-blue);
+  stroke-width: 3;
+}
+
+.logo-plug-prongs {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: strokeDraw var(--motion-standard) var(--ease-out-cubic) 400ms forwards;
+  stroke: var(--sunshine-yellow);
+  stroke-width: 2;
+}
+
+.logo-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: var(--space-xs);
+  opacity: 0;
+  animation: fadeIn var(--motion-standard) var(--ease-out-cubic) 500ms forwards;
+}
+
+/* Progress Animation - Updated Colors */
+.progress-bar {
+  height: 100%;
+  background: var(--electric-blue);
+  border-radius: 2px;
+  transition: width var(--motion-standard) var(--ease-out-cubic);
+}
+
+.progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  opacity: 0.3;
+  animation: subtlePulse 1.5s var(--ease-in-out) infinite;
+}
+
+/* Skeleton Loading - Updated Colors */
+.skeleton {
+  background: linear-gradient(90deg, #edf2f7 25%, #e2e8f0 50%, #edf2f7 75%);
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s infinite;
+}
+
+.skeleton-header,
+.skeleton-hero,
+.skeleton-card {
+  background: #e2e8f0;
+}
