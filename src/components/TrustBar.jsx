@@ -3,8 +3,8 @@ export default function TrustBar() {
     <section style={{
       backgroundColor: 'white',
       padding: 'var(--space-lg) 0',
-      borderBottom: '1px solid var(--border-light)',
-      boxShadow: 'var(--shadow-sm)'
+      borderBottom: '1px solid var(--border)',
+      boxShadow: '0 2px 8px rgba(26, 54, 93, 0.08)'
     }}>
       <div className="container-wide">
         <div className="grid grid-4">
