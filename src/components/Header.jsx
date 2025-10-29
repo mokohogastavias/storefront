@@ -3,19 +3,41 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <header style={{
-      backgroundColor: 'var(--secondary)',
+      backgroundColor: 'var(--navy)',
       color: 'white',
-      boxShadow: 'var(--shadow-lg)',
+      boxShadow: '0 4px 12px rgba(26, 54, 93, 0.15)',
       position: 'sticky',
       top: 0,
       zIndex: 1000
     }}>
       {/* Top Bar */}
       <div style={{
-        backgroundColor: 'var(--secondary-light)',
+        backgroundColor: '#0f2240', // Darker navy
         padding: 'var(--space-sm) 0',
         fontSize: '0.875rem'
       }}>
+
+<Link to="/" style={{
+  color: 'white',
+  textDecoration: 'none',
+  fontSize: '1.5rem',
+  fontWeight: 'bold',
+  display: 'flex',
+  alignItems: 'center',
+  gap: 'var(--space-sm)',
+    minWidth: '140px'
+}}>
+  <div style={{
+    background: 'var(--electric-blue)',
+    padding: 'var(--space-sm)',
+    borderRadius: 'var(--radius-md)',
+    fontSize: '1.25rem'
+  }}>
+    🔌
+  </div>
+  PlugMeUp
+</Link>
+}}>
         <div className="container-wide">
           <div style={{
             display: 'flex',
