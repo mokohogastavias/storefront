@@ -12,8 +12,9 @@ export default function Home() {
   ]
 
   return (
-    <div style={{ backgroundColor: 'var(--background-light)' }}>
+    <div style={{ backgroundColor: 'var(--background)' }}>
       {/* Hero Carousel */}
+      {/* Hero Section with your gradient */}
       <section style={{
         background: 'linear-gradient(135deg, var(--electric-blue) 0%, var(--navy) 100%)',
         padding: 'var(--space-3xl) 0',
@@ -81,7 +82,18 @@ export default function Home() {
       </section>
 
       {/* Trust Bar */}
-      <TrustBar />
+      {/* Trust Bar with your colors */}
+      <section style={{
+        backgroundColor: 'var(--background)',
+        padding: 'var(--space-lg) 0',
+        borderBottom: '1px solid var(--border)',
+        boxShadow: '0 2px 8px rgba(26, 54, 93, 0.08)'
+      }}>
+        <div className="container-wide">
+          {/* keep the TrustBar component so internal logic/markup remains */}
+          <TrustBar />
+        </div>
+      </section>
 
       {/* Categories Section */}
       <section className="container-wide" style={{ padding: 'var(--space-3xl) 0' }}>
@@ -129,7 +141,7 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section style={{ backgroundColor: 'white', padding: 'var(--space-3xl) 0' }}>
+      <section style={{ backgroundColor: 'var(--background)', padding: 'var(--space-3xl) 0' }}>
         <div className="container-wide">
           <div style={{ 
             display: 'flex', 
